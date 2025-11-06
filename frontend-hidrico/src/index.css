@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -75,10 +73,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* --- AÑADIR ESTO --- */
-  /* Fondo degradado del JSON */
+  /* Fondo degradado */
   background: linear-gradient(to bottom, #b3e0f7, #d9f2f7);
-  background-attachment: fixed; /* Evita que el degradado se mueva con el scroll */
+  background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
+}
+
+/* Estilos para el contenedor principal de la app */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
