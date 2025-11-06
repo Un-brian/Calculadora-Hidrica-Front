@@ -33,10 +33,10 @@
 /* El contenedor "celeste translúcido" del JSON */
 .formContainer {
   background-color: rgba(255, 255, 255, 0.4);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 15px;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -54,15 +54,11 @@
   letter-spacing: -0.5px;
 }
 
-
-/* --- Estilos del Formulario (CSS GRID) --- */
-/* ... el resto del código no cambia ... */
+/* --- Estilos del Formulario --- */
 .form {
   width: 100%;
-  display: grid;
-  
-  /* Móvil: 1 columna por defecto */
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.2rem;
 }
 
@@ -74,22 +70,6 @@
   margin-bottom: 0.2rem;
 }
 
-/* --- LA MAGIA RESPONSIVE --- */
-/* Si la pantalla es más ancha de 768px (Tablets y PC) */
-@media (min-width: 768px) {
-  .form {
-    /* PC: 2 columnas */
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem; /* Más espacio en PC */
-  }
-
-  /* Clase para que un campo ocupe las 2 columnas */
-  .fullWidth {
-    grid-column: 1 / -1;
-  }
-}
-
-
 /* --- Campos y Botones --- */
 
 .label {
@@ -100,8 +80,7 @@
   margin-left: 0.5rem;
 }
 
-.input,
-.select {
+.input {
   width: 100%;
   padding: 0.9rem 1.2rem;
   border: 2px solid #ccc;
@@ -115,8 +94,7 @@
   outline: none;
 }
 
-.input:focus,
-.select:focus {
+.input:focus {
   border-color: #0066ff;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
@@ -161,7 +139,48 @@
   }
 }
 
-/* Botón "Registrarse" (azul oscuro) */
+/* Fila de opciones (Recordar sesión y Olvidé contraseña) */
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #004a99;
+}
+
+.forgotLink {
+  color: #004a99;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.forgotLink:hover {
+  color: #0066ff;
+  text-decoration: underline;
+}
+
+/* Botón "Iniciar Sesión" */
 .submitButton {
   background-color: #004a99;
   color: white;
@@ -174,6 +193,8 @@
   transition: all 0.3s ease;
   position: relative;
   min-height: 48px;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .submitButton:hover:not(:disabled) {
@@ -190,44 +211,6 @@
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
-}
-
-/* Botón "Ya tengo cuenta" (azul claro) */
-.secondaryButton {
-  background-color: #b3e0f7;
-  color: #004a99;
-  font-weight: 600;
-  font-size: 1.05rem;
-  padding: 0.9rem 1.5rem;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.secondaryButton:hover:not(:disabled) {
-  background-color: #9acbde;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(179, 224, 247, 0.3);
-}
-
-.secondaryButton:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.secondaryButton:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Estilos para el Link que se ve como botón */
-.linkButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  text-align: center;
 }
 
 /* Contenedor del contenido del botón con spinner */
@@ -256,7 +239,7 @@
 
 /* Mensajes de éxito/error */
 .submitMessage {
-  grid-column: 1 / -1;
+  width: 100%;
   padding: 0.9rem 1.2rem;
   border-radius: 12px;
   font-weight: 600;
@@ -277,3 +260,45 @@
   color: #721c24;
   border: 2px solid #f5c6cb;
 }
+
+/* Enlace de registro */
+.registerLink {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.registerLink .link {
+  color: #004a99;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.registerLink .link:hover {
+  color: #0066ff;
+  text-decoration: underline;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .optionsRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forgotLink {
+    align-self: flex-end;
+  }
+}
+
